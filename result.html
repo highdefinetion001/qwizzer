@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Result</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+
+    <style>
+        .result-container {
+            text-align: center;
+            margin-top: 150px;
+        }
+
+        .score-text {
+            font-size: 50px;
+            color: cyan;
+            text-shadow: 0 0 20px cyan;
+        }
+
+        .progress-bar {
+            width: 300px;
+            height: 20px;
+            background: rgba(255,255,255,0.2);
+            margin: auto;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        .progress {
+            height: 100%;
+            width: 0%;
+            background: linear-gradient(90deg, cyan, blue);
+            transition: 2s;
+        }
+    </style>
+</head>
+
+<body class="landing">
+
+<div class="result-container">
+
+    <h1 class="glow">Quiz Completed 🎉</h1>
+
+    <div class="score-text">
+        <span id="score">0</span>/10
+    </div>
+
+    <div class="progress-bar">
+        <div class="progress" id="progress"></div>
+    </div>
+
+    <a href="/"><button class="start-btn">Play Again</button></a>
+
+</div>
+
+<script>
+let finalScore = {{ score|int }};
+let current = 0;
+
+let scoreDisplay = document.getElementById("score");
+let progress = document.getElementById("progress");
+
+let counter = setInterval(() => {
+    scoreDisplay.innerText = current;
+    current++;
+
+    if(current > finalScore){
+        clearInterval(counter);
+    }
+}, 150);
+
+setTimeout(() => {
+    progress.style.width = (finalScore/10)*100 + "%";
+}, 300);
+</script>
+
+</body>
+</html>

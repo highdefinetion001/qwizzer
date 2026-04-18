@@ -3,6 +3,7 @@ import random
 
 app = Flask(__name__)
 
+# Questions
 questions = [
     {"q": "Output of print(2**3)?", "options": ["6", "8", "9", "5"], "a": "8"},
     {"q": "Which language is used for web apps?", "options": ["Python", "JavaScript", "C++", "All"], "a": "All"},
@@ -41,8 +42,11 @@ def quiz():
 
     if q_index == len(questions):
         final_score = score
+
+        # reset
         score = 0
         q_index = 0
+
         return redirect(url_for("result", score=final_score))
 
     return render_template(
