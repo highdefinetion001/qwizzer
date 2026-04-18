@@ -1,0 +1,60 @@
+body {
+    margin: 0;
+    font-family: 'Segoe UI';
+    color: white;
+}
+
+/* Animated Background */
+.landing {
+    height: 100vh;
+    background: linear-gradient(270deg, #0f2027, #203a43, #2c5364);
+    background-size: 600% 600%;
+    animation: bg 10s infinite;
+}
+
+@keyframes bg {
+    0% {background-position: 0%}
+    50% {background-position: 100%}
+    100% {background-position: 0%}
+}
+
+.center {
+    text-align: center;
+    margin-top: 200px;
+}
+
+.glow {
+    font-size: 50px;
+    text-shadow: 0 0 20px cyan;
+}
+
+.start-btn {
+    padding: 15px 30px;
+    background: cyan;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+.start-btn:hover {
+    background: blue;
+    color: white;
+}
+
+.box {
+    margin: 100px auto;
+    width: 400px;
+    padding: 20px;
+    background: rgba(0,0,0,0.7);
+    border-radius: 10px;
+}
+
+.progress-text {
+    color: #00c6ff;
+    margin-bottom: 10px;
+}
+
+button {
+    margin-top: 10px;
+    padding: 10px;
+}
