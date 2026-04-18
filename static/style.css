@@ -1,0 +1,40 @@
+body {
+    margin: 0;
+    font-family: Arial;
+    color: white;
+    text-align: center;
+}
+
+.landing {
+    height: 100vh;
+    background: linear-gradient(135deg, #141e30, #243b55);
+}
+
+.center {
+    margin-top: 200px;
+}
+
+.glow {
+    font-size: 40px;
+    text-shadow: 0 0 20px cyan;
+}
+
+.start-btn {
+    padding: 12px 25px;
+    background: cyan;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+.box {
+    margin: 100px auto;
+    width: 400px;
+    padding: 20px;
+    background: rgba(0,0,0,0.7);
+    border-radius: 10px;
+}
+
+.progress-text {
+    color: cyan;
+}

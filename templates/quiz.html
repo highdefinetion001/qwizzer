@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Quiz</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+<div class="box">
+
+    <div class="progress-text">
+        Question {{ current }} / {{ total }}
+    </div>
+
+    <h2>{{ q.q }}</h2>
+
+    <form method="post">
+        {% for option in q.options %}
+            <label>
+                <input type="radio" name="answer" value="{{ option }}" required>
+                {{ option }}
+            </label><br>
+        {% endfor %}
+
+        <button type="submit">Submit</button>
+    </form>
+
+    <p id="timer">Time left: 20</p>
+</div>
+
+<script>
+let time = 20;
+let timer = setInterval(() => {
+    document.getElementById("timer").innerText = "Time left: " + time;
+    time--;
+
+    if(time < 0){
+        clearInterval(timer);
+        document.forms[0].submit();
+    }
+}, 1000);
+</script>
+
+</body>
+</html>
