@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Landing Page</title>
+    <title>Quiz Landing Page</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
 
@@ -9,28 +9,57 @@
 
 <div class="card">
 
-    <!-- Navbar -->
+    <!-- 🔹 NAVBAR -->
     <div class="navbar">
         <div class="logo">QUIZ APP</div>
+
         <div class="nav-links">
             <span>Home</span>
             <span>About</span>
-            <span>Services</span>
+            <span>Features</span>
         </div>
-        <a href="/quiz"><button class="contact-btn">Start Quiz</button></a>
+
+        <a href="/quiz">
+            <button class="contact-btn">Start Quiz</button>
+        </a>
     </div>
 
-    <!-- Content -->
+
+    <!-- 🔹 MAIN CONTENT -->
     <div class="content">
-        <h1>Code Quiz Challenge</h1>
-        <p>
-            Test your coding knowledge with timed questions and improve your skills.
-        </p>
+
+        <h1>Code Quiz Challenge 🚀</h1>
+        <p>Test your coding skills with timed quizzes and improve your knowledge.</p>
 
         <div class="buttons">
-            <a href="/quiz"><button class="dark-btn">Start Quiz</button></a>
+            <a href="/quiz">
+                <button class="dark-btn">Start Quiz</button>
+            </a>
+
             <button class="light-btn">Learn More</button>
         </div>
+
+
+        <!-- 🔹 DASHBOARD -->
+        <div class="dashboard">
+
+            <div class="box">
+                <h3>10</h3>
+                <p>Total Questions</p>
+            </div>
+
+            <div class="box">
+                <h3>20s</h3>
+                <p>Time per Question</p>
+            </div>
+
+            <div class="box">
+                <h3>3</h3>
+                <p>Topics</p>
+            </div>
+
+        </div>
+
     </div>
 
 </div>

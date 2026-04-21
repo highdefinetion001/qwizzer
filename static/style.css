@@ -1,4 +1,4 @@
-/* RESET */
+/* ===== RESET ===== */
 * {
     margin: 0;
     padding: 0;
@@ -6,71 +6,40 @@
     font-family: "Segoe UI", sans-serif;
 }
 
-/* BODY BACKGROUND */
+/* ===== BODY ===== */
 body {
     height: 100vh;
 }
 
-/* ANIMATED BACKGROUND */
+/* ===== CLEAN BACKGROUND ===== */
 .bg {
     height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
-    background: #dfe3f0;
-    position: relative;
-    overflow: hidden;
+    background: #f5f7fb;   /* clean light background */
 }
 
-/* GLOW BLOBS */
-.bg::before,
-.bg::after {
-    content: "";
-    position: absolute;
-    width: 450px;
-    height: 450px;
-    border-radius: 50%;
-    filter: blur(100px);
-    opacity: 0.7;
-    animation: float 10s infinite alternate ease-in-out;
-}
-
-.bg::before {
-    background: #8ef1c6;
-    top: -120px;
-    left: -120px;
-}
-
-.bg::after {
-    background: #c084fc;
-    bottom: -120px;
-    right: -120px;
-}
-
-/* FLOAT ANIMATION */
-@keyframes float {
-    from { transform: translateY(0px); }
-    to { transform: translateY(40px); }
-}
-
-/* GLASS CARD */
+/* ===== CARD ===== */
 .card {
-    width: 900px;
-    padding: 30px;
+    width: 1100px;
+    min-height: 520px;
+    padding: 40px;
     border-radius: 20px;
-    background: rgba(255,255,255,0.35);
-    backdrop-filter: blur(20px);
-    box-shadow: 0 8px 40px rgba(0,0,0,0.15);
-    animation: fadeIn 1s ease;
+
+    background: white;   /* clean card (no glass blur) */
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+
+    animation: fadeIn 0.8s ease;
 }
 
-/* FADE IN */
+/* ===== ANIMATION ===== */
 @keyframes fadeIn {
-    from { opacity: 0; transform: translateY(30px); }
+    from { opacity: 0; transform: translateY(20px); }
     to { opacity: 1; transform: translateY(0); }
 }
 
-/* NAVBAR */
+/* ===== NAVBAR ===== */
 .navbar {
     display: flex;
     justify-content: space-between;
@@ -88,7 +57,7 @@ body {
     color: #333;
 }
 
-/* BUTTONS */
+/* ===== BUTTONS ===== */
 .contact-btn,
 .dark-btn,
 .light-btn {
@@ -98,7 +67,7 @@ body {
     transition: 0.3s;
 }
 
-/* DARK BUTTON */
+/* Dark Button */
 .dark-btn {
     background: #111827;
     color: white;
@@ -106,22 +75,20 @@ body {
 }
 
 .dark-btn:hover {
-    transform: scale(1.08);
-    box-shadow: 0 0 15px rgba(0,0,0,0.4);
+    transform: scale(1.05);
 }
 
-/* LIGHT BUTTON */
+/* Light Button */
 .light-btn {
     background: white;
     border: 1px solid #ccc;
 }
 
 .light-btn:hover {
-    transform: scale(1.05);
-    background: #f3f3f3;
+    background: #f1f1f1;
 }
 
-/* CONTACT BUTTON */
+/* Contact Button */
 .contact-btn {
     border: 1px solid black;
     background: transparent;
@@ -131,7 +98,7 @@ body {
     transform: scale(1.05);
 }
 
-/* CONTENT */
+/* ===== CONTENT ===== */
 .content {
     text-align: center;
     margin-top: 50px;
@@ -151,40 +118,69 @@ body {
     color: #555;
 }
 
-/* BUTTON GROUP */
+/* ===== BUTTON GROUP ===== */
 .buttons {
     margin-top: 20px;
 }
 
-/* QUIZ OPTIONS */
+/* ===== DASHBOARD ===== */
+.dashboard {
+    margin-top: 40px;
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+}
+
+.box {
+    background: #f1f5f9;
+    padding: 20px;
+    width: 150px;
+    border-radius: 15px;
+    text-align: center;
+    transition: 0.3s;
+}
+
+.box h3 {
+    font-size: 28px;
+    color: #111827;
+}
+
+.box p {
+    color: #555;
+}
+
+.box:hover {
+    transform: translateY(-5px);
+    background: #e2e8f0;
+}
+
+/* ===== QUIZ OPTIONS ===== */
 .option {
     display: block;
     margin: 12px 0;
     padding: 12px;
-    border-radius: 12px;
-    background: rgba(255,255,255,0.6);
+    border-radius: 10px;
+    background: #f1f5f9;
     cursor: pointer;
     transition: 0.3s;
 }
 
 .option:hover {
-    background: rgba(255,255,255,0.9);
-    transform: scale(1.03);
+    background: #e2e8f0;
 }
 
-/* RADIO */
 input[type="radio"] {
     margin-right: 10px;
 }
 
-/* TIMER */
+/* ===== TIMER ===== */
 #timer {
     margin-top: 15px;
     font-weight: bold;
     color: #111827;
 }
 
-/* SCORE */
+/* ===== SCORE ===== */
 #score {
     font-size: 50px;
     font-weight: bold;
@@ -192,9 +188,14 @@ input[type="radio"] {
     margin: 20px 0;
 }
 
-/* RESPONSIVE */
-@media (max-width: 900px) {
+/* ===== RESPONSIVE ===== */
+@media (max-width: 1100px) {
     .card {
         width: 90%;
+    }
+
+    .dashboard {
+        flex-direction: column;
+        align-items: center;
     }
 }

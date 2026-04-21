@@ -3,31 +3,40 @@ import random
 
 app = Flask(__name__)
 
-# Questions
+# 🔥 QUESTIONS (10 TOTAL - CODING + DS + PYTHON)
 questions = [
-    {"q": "Output of print(2**3)?", "options": ["6", "8", "9", "5"], "a": "8"},
+    # 🔹 CODING
+    {"q": "Output of print(2**8)?", "options": ["256", "128", "64", "16"], "a": "256"},
     {"q": "Which language is used for web apps?", "options": ["Python", "JavaScript", "C++", "All"], "a": "All"},
-    {"q": "HTML stands for?", "options": ["Hyper Text Markup Language", "High Text Machine Language", "None", "Hyper Tool"], "a": "Hyper Text Markup Language"},
-    {"q": "Which is a loop?", "options": ["if", "for", "def", "class"], "a": "for"},
-    {"q": "Python is?", "options": ["Language", "Snake", "Game", "OS"], "a": "Language"},
-    {"q": "10 // 3 = ?", "options": ["3", "3.3", "4", "2"], "a": "3"},
-    {"q": "Which is frontend?", "options": ["HTML", "Python", "C", "Java"], "a": "HTML"},
-    {"q": "Which is backend?", "options": ["Flask", "CSS", "HTML", "JS"], "a": "Flask"},
-    {"q": "1 byte = ?", "options": ["8 bits", "4 bits", "16 bits", "32 bits"], "a": "8 bits"},
-    {"q": "Variable is?", "options": ["Storage", "Loop", "Function", "Class"], "a": "Storage"}
+    {"q": "Which keyword is used to define a function in Python?", "options": ["def", "fun", "function", "define"], "a": "def"},
+
+    # 🔹 DATA STRUCTURES
+    {"q": "Which data structure uses FIFO?", "options": ["Stack", "Queue", "Tree", "Graph"], "a": "Queue"},
+    {"q": "Which data structure uses LIFO?", "options": ["Queue", "Stack", "Array", "Tree"], "a": "Stack"},
+    {"q": "Which is a non-linear data structure?", "options": ["Array", "Linked List", "Tree", "Queue"], "a": "Tree"},
+
+    # 🔹 PYTHON
+    {"q": "What is the output of print(type([]))?", "options": ["list", "dict", "tuple", "set"], "a": "list"},
+    {"q": "Which symbol is used for comments in Python?", "options": ["//", "#", "/* */", "--"], "a": "#"},
+    {"q": "Which data type is immutable?", "options": ["List", "Dictionary", "Set", "Tuple"], "a": "Tuple"},
+    {"q": "Which function is used to get input from user?", "options": ["get()", "input()", "scan()", "read()"], "a": "input()"}
 ]
 
+# Shuffle questions
 random.shuffle(questions)
 
+# Global variables
 score = 0
 q_index = 0
 
 
+# 🔹 HOME
 @app.route("/")
 def home():
     return render_template("index.html")
 
 
+# 🔹 QUIZ
 @app.route("/quiz", methods=["GET", "POST"])
 def quiz():
     global score, q_index
@@ -40,12 +49,14 @@ def quiz():
 
         q_index += 1
 
-    if q_index == len(questions):
+    # End quiz
+    if q_index >= len(questions):
         final_score = score
 
         # reset
         score = 0
         q_index = 0
+        random.shuffle(questions)
 
         return redirect(url_for("result", score=final_score))
 
@@ -57,11 +68,13 @@ def quiz():
     )
 
 
+# 🔹 RESULT
 @app.route("/result")
 def result():
-    score = request.args.get("score")
-    return render_template("result.html", score=score)
+    final_score = request.args.get("score")
+    return render_template("result.html", score=final_score)
 
 
+# 🔹 RUN
 if __name__ == "__main__":
     app.run(debug=True)
