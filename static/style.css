@@ -17,26 +17,40 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    background: #f5f7fb;   /* clean light background */
+    background: #f5f7fb;
 }
 
-/* ===== CARD ===== */
+/* ===== CARD WITH SPREADED GLOW BORDER ===== */
 .card {
     width: 1100px;
     min-height: 520px;
     padding: 40px;
     border-radius: 20px;
 
-    background: white;   /* clean card (no glass blur) */
-    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    background: white;
+    position: relative;
 
-    animation: fadeIn 0.8s ease;
+    /* normal shadow */
+    box-shadow:
+        0 10px 30px rgba(0,0,0,0.1),
+
+        /* 🔥 SPREADED COLOR BORDER */
+        0 0 0 2px rgba(255,255,255,0.8),
+        0 0 25px rgba(0, 198, 255, 0.6),
+        0 0 50px rgba(124, 58, 237, 0.4);
+
+    transition: 0.3s;
 }
 
-/* ===== ANIMATION ===== */
-@keyframes fadeIn {
-    from { opacity: 0; transform: translateY(20px); }
-    to { opacity: 1; transform: translateY(0); }
+/* ✨ HOVER GLOW */
+.card:hover {
+    transform: scale(1.01);
+
+    box-shadow:
+        0 10px 30px rgba(0,0,0,0.15),
+        0 0 0 2px rgba(255,255,255,0.9),
+        0 0 40px rgba(0, 198, 255, 0.9),
+        0 0 80px rgba(124, 58, 237, 0.7);
 }
 
 /* ===== NAVBAR ===== */
