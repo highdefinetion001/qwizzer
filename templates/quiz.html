@@ -4,28 +4,35 @@
     <title>Quiz</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
-<body>
 
-<div class="box">
+<body class="bg">
 
-    <div class="progress-text">
-        Question {{ current }} / {{ total }}
+<div class="card">
+
+    <!-- Top Progress -->
+    <div class="navbar">
+        <div class="logo">QUIZ</div>
+        <div>Question {{ current }} / {{ total }}</div>
     </div>
 
-    <h2>{{ q.q }}</h2>
+    <!-- Question -->
+    <div class="content">
+        <h2>{{ q.q }}</h2>
 
-    <form method="post">
-        {% for option in q.options %}
-            <label>
-                <input type="radio" name="answer" value="{{ option }}" required>
-                {{ option }}
-            </label><br>
-        {% endfor %}
+        <form method="POST">
+            {% for option in q.options %}
+                <label class="option">
+                    <input type="radio" name="answer" value="{{ option }}" required>
+                    <span>{{ option }}</span>
+                </label>
+            {% endfor %}
 
-        <button type="submit">Submit</button>
-    </form>
+            <button type="submit" class="dark-btn">Next</button>
+        </form>
 
-    <p id="timer">Time left: 20</p>
+        <p id="timer">Time left: 20</p>
+    </div>
+
 </div>
 
 <script>

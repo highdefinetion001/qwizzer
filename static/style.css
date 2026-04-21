@@ -1,40 +1,200 @@
-body {
+/* RESET */
+* {
     margin: 0;
-    font-family: Arial;
-    color: white;
-    text-align: center;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Segoe UI", sans-serif;
 }
 
-.landing {
+/* BODY BACKGROUND */
+body {
     height: 100vh;
-    background: linear-gradient(135deg, #141e30, #243b55);
 }
 
-.center {
-    margin-top: 200px;
+/* ANIMATED BACKGROUND */
+.bg {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #dfe3f0;
+    position: relative;
+    overflow: hidden;
 }
 
-.glow {
-    font-size: 40px;
-    text-shadow: 0 0 20px cyan;
+/* GLOW BLOBS */
+.bg::before,
+.bg::after {
+    content: "";
+    position: absolute;
+    width: 450px;
+    height: 450px;
+    border-radius: 50%;
+    filter: blur(100px);
+    opacity: 0.7;
+    animation: float 10s infinite alternate ease-in-out;
 }
 
-.start-btn {
-    padding: 12px 25px;
-    background: cyan;
-    border: none;
-    border-radius: 10px;
+.bg::before {
+    background: #8ef1c6;
+    top: -120px;
+    left: -120px;
+}
+
+.bg::after {
+    background: #c084fc;
+    bottom: -120px;
+    right: -120px;
+}
+
+/* FLOAT ANIMATION */
+@keyframes float {
+    from { transform: translateY(0px); }
+    to { transform: translateY(40px); }
+}
+
+/* GLASS CARD */
+.card {
+    width: 900px;
+    padding: 30px;
+    border-radius: 20px;
+    background: rgba(255,255,255,0.35);
+    backdrop-filter: blur(20px);
+    box-shadow: 0 8px 40px rgba(0,0,0,0.15);
+    animation: fadeIn 1s ease;
+}
+
+/* FADE IN */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* NAVBAR */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    font-weight: bold;
+    font-size: 18px;
+}
+
+.nav-links span {
+    margin: 0 12px;
     cursor: pointer;
+    color: #333;
 }
 
-.box {
-    margin: 100px auto;
-    width: 400px;
-    padding: 20px;
-    background: rgba(0,0,0,0.7);
-    border-radius: 10px;
+/* BUTTONS */
+.contact-btn,
+.dark-btn,
+.light-btn {
+    padding: 10px 20px;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: 0.3s;
 }
 
-.progress-text {
-    color: cyan;
+/* DARK BUTTON */
+.dark-btn {
+    background: #111827;
+    color: white;
+    border: none;
+}
+
+.dark-btn:hover {
+    transform: scale(1.08);
+    box-shadow: 0 0 15px rgba(0,0,0,0.4);
+}
+
+/* LIGHT BUTTON */
+.light-btn {
+    background: white;
+    border: 1px solid #ccc;
+}
+
+.light-btn:hover {
+    transform: scale(1.05);
+    background: #f3f3f3;
+}
+
+/* CONTACT BUTTON */
+.contact-btn {
+    border: 1px solid black;
+    background: transparent;
+}
+
+.contact-btn:hover {
+    transform: scale(1.05);
+}
+
+/* CONTENT */
+.content {
+    text-align: center;
+    margin-top: 50px;
+}
+
+.content h1 {
+    font-size: 42px;
+    color: #1e293b;
+    margin-bottom: 10px;
+}
+
+.content h2 {
+    margin-bottom: 20px;
+}
+
+.content p {
+    color: #555;
+}
+
+/* BUTTON GROUP */
+.buttons {
+    margin-top: 20px;
+}
+
+/* QUIZ OPTIONS */
+.option {
+    display: block;
+    margin: 12px 0;
+    padding: 12px;
+    border-radius: 12px;
+    background: rgba(255,255,255,0.6);
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.option:hover {
+    background: rgba(255,255,255,0.9);
+    transform: scale(1.03);
+}
+
+/* RADIO */
+input[type="radio"] {
+    margin-right: 10px;
+}
+
+/* TIMER */
+#timer {
+    margin-top: 15px;
+    font-weight: bold;
+    color: #111827;
+}
+
+/* SCORE */
+#score {
+    font-size: 50px;
+    font-weight: bold;
+    color: #111827;
+    margin: 20px 0;
+}
+
+/* RESPONSIVE */
+@media (max-width: 900px) {
+    .card {
+        width: 90%;
+    }
 }
